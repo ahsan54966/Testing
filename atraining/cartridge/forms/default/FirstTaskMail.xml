@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+	<field formid="email" label="Enter Email" type="string" mandatory="true" regexp="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$" parse-error="Invalid Email" binding="email" max-length="50"/>
+	<field formid="Password" label="Enter Password" type="string" mandatory="true" max-length="20" min-length="4" binding="Password" />
+	<action formid="submit" valid-form="true"/>
+	<!-- <action formid="update" valid-form="true"/>  -->
+	
+</form>
+
+
+

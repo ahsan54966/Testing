@@ -1,0 +1,38 @@
+
+var svc = require('dw/svc');
+
+var LocalServiceRegistry = require('dw/svc/LocalServiceRegistry');
+   /**
+    *
+    * HTTP Services
+    *
+    */   
+    //Create Service Methods using Local Service Registery which will return
+    //Returns: Associated Service, which can be used for further protocol-specific configuration.
+    
+    
+    //1 parameter Service Name in Bm
+    
+    //2nd parameter Call back 
+    // first method createRequest in call back createRequest a request object to be used when calling a service.
+	//The type of the object expected is dependent on the service.
+	// For example, the HTTPServiceDefinition expects the HTTP request body to be returned
+	// 
+	// second method  parseResponse Creates a response object from a successful service call.
+   //This response object will be the output object of the call method's Result.
+   // response - Service-specific response object. For example, the HTTPServiceDefinition service provides the underlying 
+   // HTTPClient object that made the HTTP call.
+   // Returns: Object to return in the service call's Result.
+   
+	var weatherStatus = LocalServiceRegistry.createService("weather_service", {
+		createRequest: function(svc:HTTPService, args){
+			svc.setRequestMethod("GET");
+		},
+		parseResponse: function(svc:HTTPService, client:HTTPClient) {
+			return client;
+		}
+	});
+	
+exports.WeatherStatus = weatherStatus;
+
+

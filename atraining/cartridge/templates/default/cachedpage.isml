@@ -1,0 +1,12 @@
+<isdecorate template="product/pt_productdetails">
+Hello I am Here.
+<isinclude template="CashInclude"/>
+<iscache type="relative" minute="1" />
+<isprint value="${new Date()}" style="DATE_TIME" />
+Start Here
+
+<iscomment>
+<isinclude url="${URLUtils.url('DriverController-IncluseCach')}"/>
+ </iscomment>
+ </isdecorate>
+ 

@@ -1,0 +1,22 @@
+<!--- TEMPLATENAME: FirstTaskMail.isml --->
+
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+<isinclude template="util/modules"/>
+<isdecorate template="account/pt_account">
+
+<h1>Mail Sending</h1>
+<hr/>
+<form action="${URLUtils.httpsContinue()}" method="post" class="form-horizontal" id="FirstTaskMail">
+	<fieldset>
+		<isinputfield formfield="${pdict.CurrentForms.FirstTaskMail.email}" type="input"/>
+		<isinputfield formfield="${pdict.CurrentForms.FirstTaskMail.Password}" type="password"/>
+	</fieldset>
+
+	<fieldset>
+			<button type="submit"
+				name="${pdict.CurrentForms.FirstTaskMail.submit.htmlName}"
+				value="submit">Submit</button>
+	</fieldset>
+	
+</form>
+</isdecorate>

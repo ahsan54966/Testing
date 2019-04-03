@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+	<field formid="DriverName" label="Enter Driver Name:" type="string" mandatory="true" max-length="50" binding="custom.DriverName" missing-error="This is Unique ID Error"/>
+	<field formid="PhoneNumber" label="Enter Phone Number" type="string" mandatory="true" max-length="50" binding="custom.PhoneNumber" default-value="+92 3" />
+	<field formid="Salary" label="Enter Salary" type="number" mandatory="true" max-length="50" min="7000" max="15000" range-error="Invalid Range" binding="custom.Salary" />
+    <field formid="DOB" label="Enter Salary" type="date" mandatory="true" binding="custom.DOB" timezoned="true" />
+
+	<field formid="DriverId" type="string" mandatory="false" binding="custom.DriverId" />
+	<field formid="DriverCatagory" label="Enter Driver Catagory" type="string" mandatory="true" binding="custom.DriverCatagory" description="This is Driver Catagory List">
+		<options>
+			<option optionid="First" value="First" label="First"/>
+			<option optionid="Second" value="Second" label="Second"/>
+		</options>	
+	</field>
+
+	<action formid="submit" valid-form="true"/>
+	<action formid="update" valid-form="true"/>
+	<action formid="cancel" valid-form="false"/>
+	<!-- <action formid="update" valid-form="true"/>  -->
+	
+</form>
+
+
+

@@ -1,0 +1,57 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+
+ <isset name="image" value="${pdict.myProduct.getImage('medium',0)}" scope="page"/>
+ ${pdict.myProduct.ID}
+ <br>
+ <div>
+ <h1>Check its master or not</h1>
+${pdict.myProduct.master}
+ <isif condition="${pdict.myProduct.isMaster()==false}">
+   <p>Product is not master product</p>
+   <iselseif condition="${pdict.myProduct.isMaster()==true}">
+   <p>The product is master</p>
+  </isif>
+ 
+ </div>
+ <iscomment>
+ First we get Variation Model from Product instance then get varation attributes from varation model then get 
+ get product variation values from the variation model.
+  </iscomment>
+ <isscript>
+ 
+var ahsan='Ahsan Aku';
+//get price model from product
+         var pricemodel=pdict.myProduct.priceModel;
+         
+//check for master product and has different prices of different ranges
+out.print('<h1>Price Ranges</h1> '+ pricemodel.isPriceRange(pricemodel.getPriceInfo().priceBook.ID));
+//for standard price use getprice
+         out.print(' <h1> Hi </h1> <br> '+ pricemodel.getPrice());         
+// for tiered prices get price table
+        var pricetable=pricemodel.getPriceTable();
+        //after we get gunatities object
+		var pricetablequantity=pricetable.quantities;
+       //know we will get qunatities by iterarte array and we will get prices by calling price table method getPrice(quantity)
+       //which will take quantity object
+         for(var a=0;a < pricetablequantity.length;a++)
+         {
+         out.print( 'Qunatity' + ' ' + pricetablequantity[a]	 + ' ' + 'have this price' + ' '
+          + pricetable.getPrice(pricetablequantity[a]) + ' ' + ' <br>' );
+         }
+   // it will return PriceBookInfo Object where we have price book property then we can know which price book is using
+                out.print('<h1> to determin which price book is giving price</h1> ')
+                out.print('<h1>Price Book Name</h1> '+ pricemodel.getPriceInfo().priceBook.ID)
+                
+  // if you want to know this product price in anyother price book
+                
+out.print('<h1>Price Book Name</h1> '+ pricemodel.getPriceBookPrice('jpy-sale-prices'));
+//check for master product and has different prices of different variants in specified pricebook
+out.print('<h1>Price Ranges</h1> '+ pricemodel.isPriceRange(pricemodel.getPriceInfo().priceBook.ID));
+
+// isPriceRange() this tells product is master and have different prices of  variants.
+
+//Check wheather product is optional or not
+
+out.print('<h1>Is it optional</h1> '+ pdict.myProduct.isOptionProduct());
+
+  </isscript>

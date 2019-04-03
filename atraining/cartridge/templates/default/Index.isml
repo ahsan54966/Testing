@@ -1,0 +1,48 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+<isdecorate template="account/pt_account">
+<h1>Drivers Home Page</h1>
+<span>
+<a href="${URLUtils.https('DriverController-Start')}" ><button>Add Driver</button></a>
+<hr/>
+</span>
+<table border="1">
+<thead>
+<th>Driver Id</th>
+<th>Driver Name</th>
+<th>Driver Salary</th>
+<th>Phone Number</th>
+<th>Date of Birth</th>
+<th colspan="2">Action</th>
+</thead>
+<tbody>
+ 
+<isloop items="${pdict.Drivers}" var="driver" status="ahsan" >
+<tr>
+<td>
+${driver.custom.DriverId}
+</td>
+<td>
+${driver.custom.DriverName}
+</td>
+<td>
+${driver.custom.Salary}
+</td>
+<td>
+${driver.custom.PhoneNumber}
+</td>
+<td>
+${driver.custom.DOB}
+</td>
+<td>
+<a href="${URLUtils.https('DriverController-EditForm','DriverId',driver.custom.DriverId)}">Edit</a>
+</td>
+<td>
+<a href="${URLUtils.https('DriverController-DeleteDriver','DriverId',driver.custom.DriverId)}">Delete</a>
+</td>
+</tr>
+</isloop>
+</tbody>
+<tfoot></tfoot>
+</table>
+
+</isdecorate>

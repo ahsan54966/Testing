@@ -1,0 +1,72 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+<isdecorate template="account/pt_account">
+<h1>Drivers Home Page</h1>
+<span>
+<hr/>
+</span>
+<table border="1">
+<thead style="font-weight:bold">
+<th>Country</th>
+<th>state</th>
+<th>city</th>
+<th>latitude</th>
+<th>longitude</th>
+<th>distance</th>
+<th>timezone</th>
+<th>feedCreation</th>
+<th>metric</th>
+<th>Day Light</th>
+<th>description</th>
+<th>temperature</th>
+<th>humidity</th>
+
+</thead>
+
+<tbody>
+<tr>
+<td>
+${pdict.wdata.observations.location[0].country}
+</td>
+<td>
+${pdict.wdata.observations.location[0].state}
+</td>
+<td>
+${pdict.wdata.observations.location[0].city}
+</td>
+<td>
+${pdict.wdata.observations.location[0].latitude}
+</td>
+<td>
+${pdict.wdata.observations.location[0].longitude}
+</td>
+<td>
+${pdict.wdata.observations.location[0].distance}
+</td>
+<td>
+${pdict.wdata.observations.location[0].timezone}
+</td>
+<td>
+${pdict.wdata.feedCreation}
+</td>
+<td>
+${pdict.wdata.metric}
+</td> 
+<td>
+${pdict.wdata.observations.location[0].observation[0].daylight}
+</td>
+<td>
+${pdict.wdata.observations.location[0].observation[0].description}
+</td>
+<td>
+${pdict.wdata.observations.location[0].observation[0].temperature}
+</td>
+<td>
+${pdict.wdata.observations.location[0].observation[0].humidity}
+</td> 
+</tr>
+
+</tbody>
+<tfoot></tfoot>
+</table>
+
+</isdecorate>

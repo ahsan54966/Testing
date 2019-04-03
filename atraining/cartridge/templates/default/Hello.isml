@@ -1,0 +1,26 @@
+<!--- TEMPLATENAME: Hello.isml --->
+<html>
+<head>
+<title>Hello</title>
+</head>
+<body>
+<isslot id="newslot"
+description="recommendations banner for search no results page"
+context="Global" />
+
+<iscomment>
+<h1> Testing Url Here </h1>
+${pdict.urltest}
+Hi Afzal
+
+	<isinclude template="product/components/variations"/>
+	<p>${pdict.CurrentForms.FirstForm.firstname.label}
+		${pdict.CurrentForms.FirstForm.firstname.value}</p>
+	Hello World!
+	Rao Panaga Start Here
+<isinclude url="${URLUtils.url('JHelloWorld-Afzal', ['param', 'P0048','param1','Ahsan is a Big Man'])}"/> 
+
+${pdict.ahsang}
+ </iscomment>
+</body>
+</html>

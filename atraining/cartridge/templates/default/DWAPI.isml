@@ -1,0 +1,112 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+
+ <isset name="image" value="${pdict.myProduct.getImage('medium',0)}" scope="page"/>
+ ${pdict.myProduct.ID}
+ <br>
+ <div>
+ <h1>Check its master or not</h1>
+${pdict.myProduct.master}
+ <isif condition="${pdict.myProduct.isMaster()==false}">
+   <p>Product is not master product</p>
+   <iselseif condition="${pdict.myProduct.isMaster()==true}">
+   <p>The product is master</p>
+  </isif>
+ 
+ </div>
+ <iscomment>
+ First we get Variation Model from Product instance then get varation attributes from varation model then get 
+ get product variation values from the variation model.
+  </iscomment>
+ <isscript>
+ 
+var ahsan='Ahsan Aku';
+         var variationmodel=pdict.myProduct.variationModel;
+         var varitionattribute=variationmodel.getProductVariationAttribute('size');
+         var allvariationvalues=variationmodel.getAllValues(varitionattribute);
+         var imageproduct=pdict.myProduct.getImage('medium',0)
+         
+         <!-- getAbsURL() -->
+         out.print(imageproduct.getAbsURL());
+         out.print(' <br> ');
+         for(var a=0;a < allvariationvalues.length;a++)
+         {
+                  out.print(variationmodel.urlSelectVariationValue('Product-Show',variationmodel.getProductVariationAttribute('size'),allvariationvalues[a]));
+         
+         var orderable=variationmodel.hasOrderableVariants(variationmodel.getProductVariationAttribute('size'),allvariationvalues[a]);
+
+         out.print(orderable);
+
+         out.print(allvariationvalues[a].displayValue+ ' <br> ');
+         }
+         
+         
+         
+         
+         out.print('Variants List starts from here <br> ');
+         var variantslist=pdict.myProduct.getVariants();
+         
+         for(var a=0;a < variantslist.length;a++)
+         {
+         out.print(variantslist[a].name	 + ' <br> ');
+         }
+         
+         
+
+  </isscript>
+  <a href="${imageproduct.getAbsURL()}">Product Image</a>
+
+<img src="${image.getAbsURL()}" alt="${pdict.myProduct.name}" title="${Product.name}" height='195'
+width='195' />
+ <iscomment>
+<isloop items="allvariationvalues" var="variate" status="i" >
+
+${i.Index}
+<h4>${variate.ID}</h4>
+ </isloop>
+
+<h1>Drivers Home Page</h1>
+<span>
+<hr/>
+</span>
+<table border="1">
+<thead>
+<th>Driver Id</th>
+<th>Driver Name</th>
+<th>Driver Salary</th>
+<th>Phone Number</th>
+<th>Date of Birth</th>
+<th colspan="2">Action</th>
+</thead>
+<tbody>
+
+<isloop items="${pdict.Drivers}" var="driver" status="ahsan" >
+<tr>
+<td>
+${driver.custom.DriverId}
+</td>
+<td>
+${driver.custom.DriverName}
+</td>
+<td>
+${driver.custom.Salary}
+</td>
+<td>
+${driver.custom.PhoneNumber}
+</td>
+<td>
+${driver.custom.DOB}
+</td>
+<td>
+<a href="${URLUtils.https('DriverController-EditForm','DriverId',driver.custom.DriverId)}">Edit</a>
+</td>
+<td>
+<a href="${URLUtils.https('DriverController-DeleteDriver','DriverId',driver.custom.DriverId)}">Delete</a>
+</td>
+</tr>
+</isloop>
+
+</tbody>
+<tfoot></tfoot>
+</table>
+ </iscomment>
+ 

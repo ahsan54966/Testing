@@ -1,0 +1,6 @@
+Hi I am Cash Include
+<iscache type="relative" minute="2" />
+<br>
+This is new date.
+<br>
+<isprint value="${new Date()}" style="DATE_TIME" /> 

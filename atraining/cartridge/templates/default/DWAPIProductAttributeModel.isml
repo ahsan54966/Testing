@@ -1,0 +1,109 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+
+ <isset name="image" value="${pdict.myProduct.getImage('medium',0)}" scope="page"/>
+ ${pdict.myProduct.ID}
+ <br>
+ <div>	
+ <h1>Check its master or not</h1>
+${pdict.myProduct.master}
+ <isif condition="${pdict.myProduct.isMaster()==false}">
+   <p>Product is not master product</p>
+   <iselseif condition="${pdict.myProduct.isMaster()==true}">
+   <p>The product is master</p>
+  </isif>
+ 
+ </div>
+ <iscomment>
+ First we get Variation Model from Product instance then get varation attributes from varation model then get 
+ get product variation values from the variation model.
+  </iscomment>
+ <isscript>
+ //Check wheather product is optional or not
+
+out.print('<h1>Is it optional</h1> '+ pdict.myProduct.isOptionProduct());
+var ahsan='Ahsan Aku';
+         var attributemodel=pdict.myProduct.attributeModel;
+         var attributegroup=attributemodel.getAttributeGroups();
+         
+                           out.print(' <h1> Products Attribute groups here </h1> <br> ');         
+         // for products attribute model
+         for(var a=0;a < attributegroup.length;a++)
+         {
+         out.print(attributegroup[a].ID	 + ' <br> ');
+         }
+
+     //     for(var a=0;a < productallcats.length;a++)
+      //    {
+  //       out.print(productallcats[a].ID	 + ' <br> ');
+     //     }
+                
+         
+     //    var objatrdef= attributemodel.getOrderRequiredAttributeDefinitions();
+          
+          
+          
+          
+          //for catagories
+                  var productallcats=pdict.myProduct.getCategories();
+         var catagoryattributemodel=productallcats[0].getProductAttributeModel();
+         var catattributegroup=catagoryattributemodel.getAttributeGroups();
+         out.print(' <h1> Catagories Attribute groups here </h1> <br> ');         
+         for(var a=0;a < productallcats.length;a++)
+         {
+         out.print( 'Group with Id' + ' ' + catattributegroup[a].ID	 + ' ' + 'Group with Name' + ' ' + catattributegroup[a].displayName + ' ' + ' <br>' );
+         }
+
+  </isscript>
+ <iscomment>
+<isloop items="allvariationvalues" var="variate" status="i" >
+
+${i.Index}
+<h4>${variate.ID}</h4>
+ </isloop>
+
+<h1>Drivers Home Page</h1>
+<span>
+<hr/>
+</span>
+<table b 	order="1">
+<thead>
+<th>Driver Id</th>
+<th>Driver Name</th>
+<th>Driver Salary</th>
+<th>Phone Number</th>
+<th>Date of Birth</th>
+<th colspan="2">Action</th>
+</thead>
+<tbody>
+
+<isloop items="${pdict.Drivers}" var="driver" status="ahsan" >
+<tr>
+<td>
+${driver.custom.DriverId}
+</td>
+<td>
+${driver.custom.DriverName}
+</td>
+<td>
+${driver.custom.Salary}
+</td>
+<td>
+${driver.custom.PhoneNumber}
+</td>
+<td>
+${driver.custom.DOB}
+</td>
+<td>
+<a href="${URLUtils.https('DriverController-EditForm','DriverId',driver.custom.DriverId)}">Edit</a>
+</td>
+<td>
+<a href="${URLUtils.https('DriverController-DeleteDriver','DriverId',driver.custom.DriverId)}">Delete</a>
+</td>
+</tr>
+</isloop>
+
+</tbody>
+<tfoot></tfoot>
+</table>
+ </iscomment>
+ 

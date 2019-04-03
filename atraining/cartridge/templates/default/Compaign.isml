@@ -1,0 +1,69 @@
+<h1>Hi I am Compaign</h1>
+<isscript>
+
+var promationmgr=dw.campaign.PromotionMgr;
+//get single complain with id
+var activecompaign=promationmgr.getCampaign('Jhalak');
+//priniting attributes here
+out.print(' <h1> compaign is active : ' + activecompaign.active + '</h1>');
+out.print(' <h1> compaign Description : ' + activecompaign.description + '</h1>');
+out.print(' <h1> compaign End Date : ' + activecompaign.endDate + '</h1>');
+out.print(' <h1> Id : ' + activecompaign.ID + '</h1>');
+
+//here we get  active promotions for compaign
+var promotions=activecompaign.getPromotions();
+
+for(var i=0;i < promotions.length; i++)
+{
+// here  we get promotions groups for different promotions
+var customergroups=promotions[i].getCustomerGroups();
+for(var a=0;a < customergroups.length; a++)
+{
+   out.print(' <h1> Customer Group : ' +a + '</h1>');
+   out.print(' <h3> Customer Group Id : ' + customergroups[a].ID + '</h3>');
+   out.print(' <h3> Customer Group Is RuleBased : ' + customergroups[a].ruleBased + '</h3>');
+   out.print(' <h3> Customer Group Description : ' + customergroups[a].description + '</h3>');
+}
+}
+   out.print(' <h1> Here Customer Active Promotions of compaigns </h1>');
+var startdate=new Date();
+
+// get promotion object 
+
+//here we get active customer promotions for compaign and it will return Promotion Plan
+var activecustomerpromotionsPlan=promationmgr.getActiveCustomerPromotions();
+out.print(' <h1> Test Promotion Plan </h1>');
+
+//we get product promotions here
+
+var productpromotion=activecustomerpromotionsPlan.getProductPromotions(pdict.myProduct);
+//for order and shiping promotions just replace with product in above lines for prmotions
+for(var a=0; a < productpromotion.length; a++)
+{
+out.print( '<h1>Start From Here Product Promotion Attribute</h1>' + ' <br> ');
+out.print( 'Name:' + productpromotion[a].getName() + ' <br> ');
+// Get Promotion Class defined in BM
+out.print( 'Class:' + productpromotion[a].getPromotionClass() + ' <br> ');
+out.print( 'CallOut Message:' + productpromotion[a].calloutMsg + ' <br> ');
+out.print( 'Detail:' + productpromotion[a].details + ' <br> ');
+out.print( 'Price:' + productpromotion[a].getPromotionalPrice(pdict.myProduct) + ' <br> ')
+
+}
+
+out.print('For discount products' + ' <br> ');
+var lineitem=dw.order.BonusDiscountLineItem;
+out.print('For Lines Item' + ' <br> ' + lineitem.maxBonusItems );
+//for discounted products
+//1var LineMgr=dw.order.LineItemCtnr;
+//var as=LineMgr.getBonusDiscountLineItems();
+//out.print( 'Hi Discount Plans Here' + ' <br> ' + as.customer);
+
+//var basket=dw.order.BasketMgr.currentBasket;
+//var discountplan=promationmgr.getDiscounts(basket);
+//var discountorder=discountplan.getApproachingOrderDiscounts();
+//var discountshiping=discountplan.getApproachingShippingDiscounts();
+//out.print(discountorder + ' <br> ');
+//out.print( 'Hi Discount Plans Here' + ' <br> ' + bonusdiscountitem);
+
+
+ </isscript>

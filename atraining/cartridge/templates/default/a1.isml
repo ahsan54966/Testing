@@ -1,0 +1,15 @@
+<!--- TEMPLATENAME: a1.isml --->
+
+<html>
+<head>
+<title>Hello</title>
+</head>
+<body>
+<isscript>
+var robj=dw.web.Resource;
+
+out.print(robj.msgf("billing.email","forms_zh_CN","Hi I am Bundle","Afzal Khan"));
+ </isscript> 
+Hello World! I am No 1
+</body>
+</html> 

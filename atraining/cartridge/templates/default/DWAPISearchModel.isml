@@ -1,0 +1,30 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+
+ <isset name="image" value="${pdict.myProduct.getImage('medium',0)}" scope="page"/>
+ ${pdict.myProduct.ID}
+ <br>
+ <div>
+ <h1>Check its master or not</h1>
+${pdict.myProduct.master}
+ <isif condition="${pdict.myProduct.isMaster()==false}">
+   <p>Product is not master product</p>
+   <iselseif condition="${pdict.myProduct.isMaster()==true}">
+   <p>The product is master</p>
+  </isif>
+ 
+ </div>
+ <iscomment>
+
+  </iscomment>
+ <isscript>
+ 
+         dw.catalog.SearchModel.getCategoryID(pdict.cid);
+         out.print(' <h1> Search Model Starts Here </h1> <br> ');         
+
+         for(var a=0;a < productarray.length;a++)
+         {
+           out.print( 'Id' + ' ' + productarray[a].ID + ' <br>' );
+         }
+
+
+  </isscript>

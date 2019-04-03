@@ -1,0 +1,115 @@
+<h1>Welcome to Order</h1>
+<isscript>
+var containermgr=dw.order.LineItemCtnr;
+var ordermgr=dw.order.OrderMgr;
+
+out.print( ' <h1> Order </h1>' );
+var order=ordermgr.getOrder('00000001');
+
+
+
+
+
+out.print( 'Affliated Partner Id: ' + ' ' + order.orderNo + '</br>' );
+out.print( '<h1>Order Level Price</h1> ' + '</br>' );
+out.print( 'Total Net Price: ' + ' ' + order.getTotalNetPrice() + '</br>' );
+out.print( 'Total Gross Price: ' + ' ' + order.getTotalGrossPrice() + '</br>' );
+
+out.print( '<h1>Total Taxes</h1> ' + '</br>' );
+out.print( 'Total Shiping Tax: ' + ' ' + order.getShippingTotalTax() + '</br>' );
+out.print( 'Total Merchendize Tax: ' + ' ' + order.getMerchandizeTotalTax() + '</br>' );
+out.print( 'Total Gift Tax: ' + ' ' + order.getGiftCertificateTotalTax() + '</br>' );
+out.print( 'Total Tax: ' + ' ' + order.getTotalTax() + '</br>' );
+
+
+out.print( '<h1>Mercehdize Level Price</h1> ' + '</br>' );
+out.print( 'Total Merchendize Gross Price: ' + ' ' + order.getMerchandizeTotalGrossPrice() + '</br>' );
+out.print( 'Total Mercendize Net Price: ' + ' ' + order.getMerchandizeTotalNetPrice() + '</br>' );
+out.print( 'Total Mercendize Total Price: ' + ' ' + order.getMerchandizeTotalPrice() + '</br>' );
+
+out.print( '<h1>Shipment Level Price</h1> ' + '</br>' );
+out.print( 'Total Shipping Net Price: ' + ' ' + order.getShippingTotalNetPrice() + '</br>' );
+out.print( 'Total Shipping Gross Price: ' + ' ' + order.getShippingTotalGrossPrice() + '</br>' );
+out.print( 'Total Shipping Total Price: ' + ' ' + order.getShippingTotalPrice() + '</br>' );
+
+
+
+//  recalculate the total when we update something in the basket
+out.print( 'Update Total' + ' ' + order.updateTotals() + '</br>' );
+out.print( ' <h1> Payment Instruments </h1>' );
+// Get Payment instrumentrs return this class OrderPaymentInstrument
+var paymentinstruments=order.getPaymentInstruments();
+
+out.print( 'Get Payments Instruments: ' + ' ' + paymentinstruments.length + '</br>');
+for(var a=0; a < paymentinstruments.length; a++)
+{
+
+out.print( 'Credit Card Number' + ' ' + paymentinstruments[a].creditCardNumber + '</br>' );
+out.print( 'Credit Card Type' + ' ' + paymentinstruments[a].creditCardType + '</br>' );
+out.print( 'Refunded Amount' + ' ' + paymentinstruments[a].refundedAmount + '</br>' );
+out.print( 'Credit Card Expire Year' + ' ' + paymentinstruments[a].creditCardExpirationYear + '</br>' );
+}
+out.print( ' <h1> Shipments </h1>' ); 
+// Get Payment Shipments return this class Shipment
+var Shipments=order.getShipments();
+
+//out.print( 'Get Shipments : ' + ' ' + Shipments.length + '</br>');
+for(var a=0; a < Shipments.length; a++)
+{
+out.print( 'Shipments Id' + ' ' + Shipments[a].ID   + '</br>' );
+out.print( 'Merchendize Total gross Price' + ' ' + Shipments[a].merchandizeTotalGrossPrice + '</br>' );
+out.print( 'Merchendise Total Tax' + ' ' + Shipments[a].merchandizeTotalTax + '</br>' );
+out.print( 'Shipment Address' + ' ' + Shipments[a].shippingAddress.address1 + '</br>' );
+out.print( 'Shipment No' + ' ' + Shipments[a].shipmentNo + '</br>' );
+out.print( 'totalGrossPrice' + ' ' + Shipments[a].tot alGrossPrice + '</br>' );
+out.print( 'Adjusted Total Gross Price' + ' ' + Shipments[a].adjustedShippingTotalGrossPrice + '</br>' );
+
+}
+
+var lineitems=order.getAllLineItems();
+
+out.print( '<h1>All Line Items Start from here</h1> </br>' );
+
+
+for(var a=0;a < lineitems.length; a++)
+{
+out.print( 'Line Item Length' + ' ' + lineitems[a] + '</br>' );
+}
+
+
+out.print( '<h1>Product Line Items Start from here</h1> </br>' );
+var productlineitem = order.getAllProductLineItems();
+for(var a=0;a < productlineitem.length; a++)
+{
+out.print( 'Line Item Length' + ' ' + productlineitem[a].product.ID +
+ 'with this name' + ' ' + productlineitem[a].product.name + ' with this price'
+  + productlineitem[a].product.getPriceModel().getPrice()
+ + ' with this prorated price' + productlineitem[a].proratedPrice + '</br>' );
+}
+
+
+out.print( '<h1>Gift Certificate Line Items Start from here</h1> </br>' );
+var giftlineitem = order.getGiftCertificateLineItems();
+for(var a=0;a < giftlineitem.length; a++)
+{
+out.print( 'Line Item Length' + ' ' + giftlineitem[a] + '</br>' );
+}
+
+
+out.print( '<h1>get Coupon Line Items Start from here</h1> </br>' );
+var Couponlineitem = order.getCouponLineItems();
+for(var a=0;a < Couponlineitem.length; a++)
+{
+out.print( 'Line Item Length' + ' ' + Couponlineitem[a] + '</br>' );
+}
+
+
+
+
+
+
+
+
+
+
+ </isscript>

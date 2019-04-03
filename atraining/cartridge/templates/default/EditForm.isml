@@ -1,0 +1,27 @@
+<iscontent type="text/html" charset="UTF-8" compact="true" />
+<isinclude template="util/modules"/>
+<isdecorate template="account/pt_account">
+<h1>Hello World Form</h1>
+
+<form action="${URLUtils.httpsContinue()}" method="post" class="form-horizontal" id="FirstForm">
+	<fieldset>
+		<isinputfield formfield="${pdict.CurrentForms.FirstForm.DriverName}" type="input"/>
+		<isinputfield formfield="${pdict.CurrentForms.FirstForm.PhoneNumber}" type="input"/>
+		<isinputfield formfield="${pdict.CurrentForms.FirstForm.Salary}" type="input"/>
+				<isinputfield formfield="${pdict.CurrentForms.FirstForm.DriverId}" type="hidden"/>
+		<iscomment>
+				<isinputfield formfield="${pdict.CurrentForms.FirstForm.DOB}" type="date"/>
+		 </iscomment>
+
+	</fieldset>
+	<fieldset>
+<isinputfield formfield="${pdict.CurrentForms.FirstForm.DriverCatagory}" type="select"/>
+	</fieldset>
+	<fieldset>
+			<button type="submit"
+				name="${pdict.CurrentForms.FirstForm.update.htmlName}"
+				value="update">Update</button>
+	</fieldset>
+	
+</form>
+</isdecorate>
